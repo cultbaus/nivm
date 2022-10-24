@@ -1,0 +1,3 @@
+O = {
+    colorscheme = 'gruvbox',
+}

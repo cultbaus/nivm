@@ -3,10 +3,15 @@ if not ok then
     return
 end
 
+local ok_snip, snip = pcall(require, 'luasnip')
+if not ok_snip then
+    return
+end
+
 cmp.setup {
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            snip.lsp_expand(args.body)
         end,
     },
     mapping = {
@@ -17,5 +22,6 @@ cmp.setup {
         { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'path' },
+        { name = 'neorg' },
     },
 }

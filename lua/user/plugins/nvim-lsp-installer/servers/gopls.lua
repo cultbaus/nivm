@@ -15,7 +15,8 @@ M.setup = function(config)
         settings = {
             gopls = {
                 analyses = {
-                    unusedparams = false,
+                    unreachable = true,
+                    unusedparams = true,
                 },
                 staticcheck = true,
             },

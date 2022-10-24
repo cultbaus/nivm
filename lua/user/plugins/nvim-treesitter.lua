@@ -21,6 +21,7 @@ treesitter.setup {
         'typescript',
         'tsx',
         'javascript',
+        'norg',
     },
     highlight = {
         enable = true,

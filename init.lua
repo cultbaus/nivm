@@ -1,4 +1,8 @@
 require 'user.plugins'
+require 'user.core.utils'
+require 'user.core.config'
+require 'user.core.highlights'
 require 'user.core.options'
 require 'user.core.commands'
 require 'user.core.keybindings'
+require 'user.core.statusline'

@@ -15,7 +15,7 @@ local lsp_formatting = function(bufnr)
     vim.lsp.buf.format {
         filter = function(clients)
             return vim.tbl_filter(function(client)
-                return client.name == 'null-ls'
+                return client == 'null-ls'
             end, clients)
         end,
         bufnr = bufnr,
@@ -44,7 +44,9 @@ null_ls.setup {
     on_attach = on_attach,
     diagnostics_format = '[#{c}] #{m} (#{s})',
     sources = {
-        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.prettierd.with {
+            filetypes = { 'html', 'json', 'markdown' },
+        },
         null_ls.builtins.formatting.eslint_d,
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.formatting.clang_format,
@@ -55,5 +57,6 @@ null_ls.setup {
         null_ls.builtins.formatting.shfmt.with {
             args = { '-i', '2', '-ci' },
         },
+        null_ls.builtins.formatting.autopep8,
     },
 }

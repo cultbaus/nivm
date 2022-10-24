@@ -7,6 +7,10 @@ end
 
 packer.startup {
     function(use)
+        -- Colors
+        use 'olimorris/onedarkpro.nvim'
+        use 'sainnhe/gruvbox-material'
+        --
         use 'wbthomason/packer.nvim'
         use 'L3MON4D3/LuaSnip'
         use 'neovim/nvim-lspconfig'
@@ -19,13 +23,17 @@ packer.startup {
         use 'numToStr/Comment.nvim'
         use 'williamboman/nvim-lsp-installer'
         use { 'nvim-telescope/telescope.nvim', requires = 'nvim-lua/plenary.nvim' }
-        use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
         use {
             'jose-elias-alvarez/null-ls.nvim',
             requires = {
                 'nvim-lua/plenary.nvim',
                 'neovim/nvim-lspconfig',
             },
+        }
+        use {
+            'nvim-neorg/neorg',
+            requires = 'nvim-lua/plenary.nvim',
+            run = ':Neorg sync-parsers',
         }
         packer.install()
     end,
@@ -38,4 +46,4 @@ config 'nvim-telescope'
 config 'nvim-lsp-installer'
 config 'null_ls'
 config 'comment'
-config 'neogit'
+config 'neorg'

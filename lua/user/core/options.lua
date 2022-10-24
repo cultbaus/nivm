@@ -24,7 +24,6 @@ vim.o.lazyredraw = true
 vim.o.ruler = true
 vim.o.showmode = false
 vim.o.laststatus = 2
-vim.o.statusline = [[%!luaeval("require'user.core.statusline'.render()")]]
 
 -- Better display
 vim.wo.signcolumn = 'number'
@@ -63,3 +62,13 @@ vim.o.clipboard = vim.o.clipboard .. 'unnamedplus'
 vim.wo.wrap = true
 vim.o.spell = false
 vim.wo.number = true
+
+-- Disable providers
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+-- Colors
+vim.o.termguicolors = true

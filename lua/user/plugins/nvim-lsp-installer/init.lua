@@ -10,6 +10,7 @@ local ensure_installed = {
     'tsserver',
     'bashls',
     'cmake',
+    'pyright',
 }
 
 lsp_installer.setup {
