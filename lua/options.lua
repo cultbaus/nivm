@@ -19,12 +19,14 @@ o.expandtab = true
 -- Status line
 o.ruler = true
 o.showmode = false
+o.laststatus = 2
 
 -- Better display
 o.signcolumn = 'number'
-o.cmdheight = 2
+o.cmdheight = 1
 o.pumheight = 10
 o.splitbelow = true
+o.hidden = true
 
 -- File types
 o.encoding = 'utf8'
@@ -35,6 +37,7 @@ o.updatetime = 300
 
 -- File changes
 o.autowrite = true
+o.autowriteall = true
 o.autoread = true
 o.backup = false
 o.writebackup = false

@@ -78,8 +78,42 @@ local function lineinfo()
 end
 
 local function lsp()
-    -- TODO @gebhartn: Add lsp error/warn/hint counts + symbols
-    return ''
+    local count = {}
+    local levels = {
+        errors = 'Error',
+        warnings = 'Warn',
+        info = 'Info',
+        hints = 'Hint',
+    }
+
+    for k, level in pairs(levels) do
+        count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
+    end
+
+    local errors = ''
+    local warnings = ''
+    local hints = ''
+    local info = ''
+
+    local error_sign = ' '
+    local warning_sign = ' '
+    local hint_sign = ' '
+    local info_sign = ' '
+
+    if count['errors'] ~= 0 then
+        errors = ' %#LspDiagnosticsSignError#' .. error_sign .. count['errors']
+    end
+    if count['warnings'] ~= 0 then
+        warnings = ' %#LspDiagnosticsSignWarning#' .. warning_sign .. count['warnings']
+    end
+    if count['hints'] ~= 0 then
+        hints = ' %#LspDiagnosticsSignHint#' .. hint_sign .. count['hints']
+    end
+    if count['info'] ~= 0 then
+        info = ' %#LspDiagnosticsSignInformation#' .. info_sign .. count['info']
+    end
+
+    return errors .. warnings .. hints .. info .. '%#Normal#'
 end
 
 Statusline = {}
@@ -89,6 +123,9 @@ Statusline.active = function()
         '%#Statusline#',
         update_mode_colors(),
         mode(),
+        '%#Normal#',
+        filepath(),
+        filename(),
         '%#Normal#',
         lsp(),
         '%=%#StatusLineExtra#',

@@ -1,7 +1,11 @@
-require('plugins.config.nvim-treesitter').setup()
-require('plugins.config.nvim-autopairs').setup()
-require('plugins.config.nvim-cmp').setup()
-require('plugins.config.comment').setup()
-require('plugins.config.nvim-lsp-installer').setup()
-require('plugins.config.null-ls').setup()
-require('plugins.config.nvim-telescope').setup()
+local function setup(plugin)
+    require('plugins.config.' .. plugin).setup()
+end
+
+setup 'comment'
+setup 'nvim-autopairs'
+setup 'nvim-cmp'
+setup 'nvim-lsp-installer'
+setup 'nvim-telescope'
+setup 'nvim-treesitter'
+setup 'null-ls'
