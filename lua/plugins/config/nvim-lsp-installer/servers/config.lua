@@ -16,6 +16,11 @@ M.capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilit
 
 M.on_attach = function(client)
     wk.register {
+        f = {
+            name = '+diagnostics',
+            ne = { vim.diagnostic.goto_next, 'go to next error' },
+            pe = { vim.diagnostic.goto_prev, 'go to prev error' },
+        },
         g = {
             name = '+jump',
             d = { vim.lsp.buf.definition, 'go to definition' },

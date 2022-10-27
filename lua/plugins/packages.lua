@@ -24,7 +24,14 @@ function M.setup()
                 'jose-elias-alvarez/null-ls.nvim',
                 requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
             }
+            use { 'nvim-neorg/neorg', requires = 'nvim-lua/plenary.nvim' }
             use 'folke/which-key.nvim'
+            use {
+                'iamcco/markdown-preview.nvim',
+                run = function()
+                    vim.fn['mkdp#util#install']()
+                end,
+            }
             packer.install()
         end,
     }

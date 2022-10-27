@@ -19,6 +19,10 @@ local function live_grep()
     b.live_grep { previwer = false }
 end
 
+local function diagnostics()
+    b.diagnostics()
+end
+
 function M.setup()
     local ok, telescope = pcall(require, 'telescope')
     if not ok then
@@ -32,6 +36,7 @@ function M.setup()
 
     wk.register {
         name = '+find',
+        ['fno'] = { diagnostics, 'telescope diagnostic' },
         ['<C-p>'] = { find_files, 'find file' },
         ['<C-g>'] = { live_grep, 'live grep' },
     }
